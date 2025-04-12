@@ -1,0 +1,520 @@
+/* Palette de couleurs inspirée de l'espace */
+:root {
+    --violet-fonce: #2E1A47; /* Fond principal */
+    --violet-clair: #8A4FFF; /* Éléments en surbrillance */
+    --bleu-nuit: #1A1A40;  /* Couleur de fond sombre */
+    --bleu-etoile: #4A6FA5; /* Texte secondaire */
+    --gris-etoile: #D9D9D9; /* Texte principal clair */
+    --blanc-pur: #ffffff;
+    --orange: #FF4500;
+    --fond-a-propos: #1B1B2F;
+    --bouton-about: #2C2C54;
+    --bouton-about-hover: #FF6F91;
+    --contact-link: #55D5E0;
+    --footer-bg: rgba(30, 26, 71, 0.8);
+    --portfolio-item-bg: #1B1B2F;
+    --projets-bg: #2E1A47;
+    --tkt: #052530;
+    --rose: #87265D;
+}
+
+/* Réinitialisation des marges et padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corps de la page */
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--gris-etoile);
+    margin: 0;
+    padding: 0;
+    background: url('../img/image-de-fond.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* Header avec navigation */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: none;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--blanc-pur);
+}
+
+.logo i {
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--blanc-pur);
+    font-weight: 300;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+nav ul li a i {
+    margin-right: 8px;
+}
+
+nav ul li a:hover {
+    color: var(--violet-clair);
+}
+
+/* Section Accueil */
+#accueil {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+/* Texte et éléments de l'intro en blanc */
+.intro {
+    color: var(--blanc-pur);
+    text-align: center;
+}
+
+.intro h1 {
+    color: var(--blanc-pur); 
+    font-size: 4em;
+}
+
+.intro p {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+    color: var(--gris-etoile); 
+}
+
+/* Bouton de téléchargement du CV */
+.btn-cv {
+    display: inline-block;
+    background: var(--violet-clair);
+    color: var(--blanc-pur);
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background 0.3s ease;
+}
+
+.btn-cv:hover {
+    background: var(--orange);
+}
+.tab-button.active {
+    background: var(--violet-clair);
+    color: var(--blanc-pur);
+}
+.tab-content {
+    min-height: 150px; /* Tu peux augmenter cette valeur si besoin */
+}
+
+
+/* Section À Propos avec formes */
+#portfolio {
+    background: var(--violet-fonce);
+    padding: 50px;
+    position: relative;  /* Nécessaire pour que le positionnement fonctionne bien */
+    
+
+}
+
+/* Augmentation de la taille des boutons */
+.about-info button {
+    background: var(--bouton-about);
+    color: var(--gris-etoile);
+    border: none;
+    padding: 15px 25px; /* Augmentation de la taille */
+    margin: 10px 5px;
+    border-radius: 12px;
+    font-size: 1.2em; /* Augmentation de la taille de police */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.about-info button.active, .about-info button:hover {
+    background: var(--bouton-about-hover);
+    color: var(--blanc-pur);
+    transform: scale(1.05); /* Effet léger d'agrandissement au survol */
+}
+
+
+
+
+#a-propos {
+    position: relative;
+    background: var(--fond-a-propos);
+    color: var(--gris-etoile);
+    padding: 50px;
+    text-align: center;
+    border-radius: 20px;
+    width: 80%;
+    margin: 50px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+#a-propos h2 {
+    color: var(--gris-etoile);
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.title-soft {
+    font-weight: bold;
+    font-size: 1em; /* Ajuste la taille si besoin */
+    color: var(--orange); /* Change la couleur selon ton thème */
+    margin-right: 5px; /* Un petit espace entre le titre et le texte */
+}
+
+
+.about-container {
+    display: flex;
+    align-items: flex-start; /* Assure que la photo reste alignée en haut */
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.profile-pic {
+    border-radius: 20px;
+    width: 200px;
+    height: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.about-info {
+    max-width: 600px;
+    width: 100%; /* Assure que le texte prend toute la largeur restante sans pousser la photo */
+    text-align: left;
+}
+
+
+.about-info button {
+    background: var(--bouton-about);
+    color: var(--gris-etoile);
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.about-info button.active, .about-info button:hover {
+    background: var(--bouton-about-hover);
+    color: var(--blanc-pur);
+}
+
+.about-info p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin-top: 20px;
+}
+
+/* Section Compétences Techniques */
+#competences-techniques {
+    padding: 50px;
+    text-align: center;
+}
+
+#competences-techniques h2 {
+    color: var(--blanc-pur);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-card, .skill-card2, .skill-card3, .skill-card4, .skill-card5, .skill-card6, .skill-card7 {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill-card img, .skill-card2 img, .skill-card3 img, .skill-card4 img, .skill-card5 img, .skill-card6 img, .skill-card7 img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.skill-card p, .skill-card2 p, .skill-card3 p, .skill-card4 p, .skill-card5 p, .skill-card6 p, .skill-card7 p {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--gris-etoile);
+}
+
+.skill-card:hover, .skill-card2:hover, .skill-card3:hover, .skill-card4:hover, .skill-card5:hover, .skill-card6:hover, .skill-card7:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(255, 102, 178, 0.5);
+}
+
+.skill-card {
+    background-color: var(--fond-a-propos);
+}
+
+.skill-card2 {
+    background-color: var(--violet-clair);
+}
+
+.skill-card3 {
+    background-color: var(--rose);
+}
+
+.skill-card4 {
+    background-color: var(--orange); /* Orange vif */
+}
+
+.skill-card5 {
+    background-color: var(--bleu-etoile); /* Bleu étoile */
+}
+
+.skill-card6 {
+    background-color: #FF69B4; /* Rose clair */
+}
+
+.skill-card7 {
+    background-color: #32CD32; /* Vert lime */
+}
+
+
+
+/* Section Portfolio */
+#portfolio p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    color: var(--gris-etoile);
+}
+
+/* Grille de projets (Portfolio) */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px; /* Augmente l'espacement entre les projets */
+    padding: 40px 0; /* Ajoute de l'espace au-dessus et en dessous de la grille */
+}
+
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--tkt);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    min-height: 400px; /* Ajuste la hauteur minimale selon ton besoin */
+}
+
+
+
+.portfolio-item img {
+    width: 100%;
+    display: block;
+}
+
+.portfolio-info {
+    position: relative; /* S'assure que le petit texte reste dans son cadre */
+    padding-bottom: 25px; /* Ajoute de l'espace pour éviter qu'il remonte trop */
+    min-height: 100px; /* Ajuste selon la taille moyenne du texte */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portfolio-info h3 {
+    color: var(--violet-clair);
+    margin-bottom: 10px;
+}
+
+.portfolio-info small {
+    align-self: flex-end; /* Positionne le texte en bas à droite */
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+.portfolio-info p {
+    flex-grow: 1; /* La description prendra l'espace disponible */
+    margin-bottom: 10px;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Section Projets */
+#projets {
+    padding: 50px;
+    border-radius: 20px;
+    margin: 50px auto;
+    width: 80%;
+}
+
+#projets h2 {
+    color: var(--violet-clair);
+}
+
+#projets p {
+    font-size: 1.2em;
+    color: var(--gris-etoile);
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; /* Ajuste la hauteur maximale selon tes besoins */
+    object-fit: cover; /* Assure que l'image couvre bien la zone sans déformation */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.portfolio-info small {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.75em; /* Taille légèrement plus petite */
+    color: var(--gris-etoile);
+    opacity: 0.8;
+    text-align: right;
+}
+
+    .tech-used {
+        font-style: italic;
+        color: #007BFF; /* Bleu vif pour bien ressortir */
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+
+/* Section Contact */
+#contact {
+    background: var(--bleu-nuit);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin: 50px auto;
+    width: 80%;
+    text-align: center;
+}
+
+#contact h2 {
+    color: var(--bleu-etoile);
+    margin-bottom: 20px;
+}
+
+#contact p, #contact a {
+    font-size: 1.2em;
+    color: var(--gris-etoile);
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    color: var(--violet-clair);
+}
+
+.btn-contact {
+    display: inline-block;
+    background: var(--violet-clair);
+    color: var(--blanc-pur);
+    padding: 12px 25px;
+    margin: 15px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-contact:hover {
+    background: var(--orange);
+    transform: translateY(-3px);
+}
+
+.video-btn i {
+    margin-right: 8px;
+}
+
+
+
+
+
+/* Footer */
+footer {
+    background: var(--footer-bg);
+    color: var(--gris-etoile);
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+/* Adaptation pour mobile */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-info {
+        text-align: center;
+    }
+
+    header {
+        padding: 10px 20px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    section {
+        width: 90%;
+    }
+
+    #a-propos, #portfolio, #projets, #contact {
+        width: 90%;
+    }
+}
