@@ -18,22 +18,34 @@
     --rose: #87265D;
 }
 
-/* Réinitialisation des marges et padding */
+/* Réinitialisation */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Images fluides */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Corps de la page */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     color: var(--gris-etoile);
     margin: 0;
     padding: 0;
     background: url('../img/image-de-fond.jpg') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
+}
+
+/* Sections : padding fluide + évite les largeurs cassées */
+section {
+    padding: 80px 20px;
 }
 
 /* Header avec navigation */
@@ -49,6 +61,7 @@ header {
     z-index: 1000;
 }
 
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
@@ -61,10 +74,12 @@ header {
     margin-right: 10px;
 }
 
+/* Navigation */
 nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
+    flex-wrap: wrap; /* évite de casser sur petits écrans */
 }
 
 nav ul li a {
@@ -87,34 +102,35 @@ nav ul li a:hover {
 
 /* Section Accueil */
 #accueil {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: 120px; /* évite que le header masque le contenu */
+    padding-bottom: 60px;
 }
 
-
-
-/* Texte et éléments de l'intro en blanc */
+/* Texte et éléments de l'intro */
 .intro {
     color: var(--blanc-pur);
     text-align: center;
+    padding: 0 10px;
 }
 
 .intro h1 {
-    color: var(--blanc-pur); 
-    font-size: 4em;
+    color: var(--blanc-pur);
+    font-size: clamp(2.2rem, 5vw, 4rem); /* responsive */
 }
 
 .intro p {
-    font-size: 1.5em;
-    margin: 0.5em 0;
-    color: var(--gris-etoile); 
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    margin: 0.6em 0;
+    color: var(--gris-etoile);
 }
 
-/* Bouton de téléchargement du CV */
+/* Bouton CV */
 .btn-cv {
     display: inline-block;
     background: var(--violet-clair);
@@ -122,54 +138,33 @@ nav ul li a:hover {
     padding: 10px 20px;
     margin-top: 20px;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background 0.3s ease;
+    border-radius: 10px;
+    font-size: 1.1em;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-cv:hover {
     background: var(--orange);
+    transform: translateY(-2px);
 }
+
+/* Onglets (si utilisés) */
 .tab-button.active {
     background: var(--violet-clair);
     color: var(--blanc-pur);
 }
 .tab-content {
-    min-height: 150px; /* Tu peux augmenter cette valeur si besoin */
+    min-height: 150px;
 }
 
-
-/* Section À Propos avec formes */
+/* Section Portfolio (wrapper) */
 #portfolio {
     background: var(--violet-fonce);
-    padding: 50px;
-    position: relative;  /* Nécessaire pour que le positionnement fonctionne bien */
-    
-
+    padding: 60px 20px;
+    position: relative;
 }
 
-/* Augmentation de la taille des boutons */
-.about-info button {
-    background: var(--bouton-about);
-    color: var(--gris-etoile);
-    border: none;
-    padding: 15px 25px; /* Augmentation de la taille */
-    margin: 10px 5px;
-    border-radius: 12px;
-    font-size: 1.2em; /* Augmentation de la taille de police */
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.about-info button.active, .about-info button:hover {
-    background: var(--bouton-about-hover);
-    color: var(--blanc-pur);
-    transform: scale(1.05); /* Effet léger d'agrandissement au survol */
-}
-
-
-
-
+/* À propos */
 #a-propos {
     position: relative;
     background: var(--fond-a-propos);
@@ -177,7 +172,7 @@ nav ul li a:hover {
     padding: 50px;
     text-align: center;
     border-radius: 20px;
-    width: 80%;
+    width: min(1100px, 80%);
     margin: 50px auto;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     overflow: hidden;
@@ -185,23 +180,23 @@ nav ul li a:hover {
 
 #a-propos h2 {
     color: var(--gris-etoile);
-    font-size: 3em;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
     margin-bottom: 20px;
 }
 
 .title-soft {
     font-weight: bold;
-    font-size: 1em; /* Ajuste la taille si besoin */
-    color: var(--orange); /* Change la couleur selon ton thème */
-    margin-right: 5px; /* Un petit espace entre le titre et le texte */
+    font-size: 1em;
+    color: var(--orange);
+    margin-right: 5px;
 }
-
 
 .about-container {
     display: flex;
-    align-items: flex-start; /* Assure que la photo reste alignée en haut */
+    align-items: flex-start;
     justify-content: space-around;
     flex-wrap: wrap;
+    gap: 25px;
 }
 
 .profile-pic {
@@ -214,42 +209,45 @@ nav ul li a:hover {
 
 .about-info {
     max-width: 600px;
-    width: 100%; /* Assure que le texte prend toute la largeur restante sans pousser la photo */
+    width: 100%;
     text-align: left;
 }
 
-
+/* Boutons À propos (consolidé, sans doublon) */
 .about-info button {
     background: var(--bouton-about);
     color: var(--gris-etoile);
     border: none;
-    padding: 10px 20px;
+    padding: 15px 25px;
     margin: 10px 5px;
-    border-radius: 10px;
+    border-radius: 12px;
+    font-size: 1.1em;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
-.about-info button.active, .about-info button:hover {
+.about-info button.active,
+.about-info button:hover {
     background: var(--bouton-about-hover);
     color: var(--blanc-pur);
+    transform: scale(1.03);
 }
 
 .about-info p {
-    font-size: 1.2em;
+    font-size: 1.15em;
     line-height: 1.6em;
     margin-top: 20px;
 }
 
 /* Section Compétences Techniques */
 #competences-techniques {
-    padding: 50px;
+    padding: 50px 20px;
     text-align: center;
 }
 
 #competences-techniques h2 {
     color: var(--blanc-pur);
-    font-size: 2.5em;
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
     margin-bottom: 30px;
 }
 
@@ -261,9 +259,15 @@ nav ul li a:hover {
     margin: 0 auto;
 }
 
-.skill-card, .skill-card2, .skill-card3, .skill-card4, .skill-card5, .skill-card6, .skill-card7 {
+.skill-card,
+.skill-card2,
+.skill-card3,
+.skill-card4,
+.skill-card5,
+.skill-card6,
+.skill-card7 {
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
@@ -271,52 +275,49 @@ nav ul li a:hover {
     align-items: center;
 }
 
-.skill-card img, .skill-card2 img, .skill-card3 img, .skill-card4 img, .skill-card5 img, .skill-card6 img, .skill-card7 img {
+.skill-card img,
+.skill-card2 img,
+.skill-card3 img,
+.skill-card4 img,
+.skill-card5 img,
+.skill-card6 img,
+.skill-card7 img {
     width: 50px;
     height: 50px;
     margin-bottom: 10px;
 }
 
-.skill-card p, .skill-card2 p, .skill-card3 p, .skill-card4 p, .skill-card5 p, .skill-card6 p, .skill-card7 p {
+.skill-card p,
+.skill-card2 p,
+.skill-card3 p,
+.skill-card4 p,
+.skill-card5 p,
+.skill-card6 p,
+.skill-card7 p {
     font-size: 1.1em;
     font-weight: bold;
     color: var(--gris-etoile);
+    text-align: center;
 }
 
-.skill-card:hover, .skill-card2:hover, .skill-card3:hover, .skill-card4:hover, .skill-card5:hover, .skill-card6:hover, .skill-card7:hover {
+.skill-card:hover,
+.skill-card2:hover,
+.skill-card3:hover,
+.skill-card4:hover,
+.skill-card5:hover,
+.skill-card6:hover,
+.skill-card7:hover {
     transform: translateY(-10px);
     box-shadow: 0 6px 12px rgba(255, 102, 178, 0.5);
 }
 
-.skill-card {
-    background-color: var(--fond-a-propos);
-}
-
-.skill-card2 {
-    background-color: var(--violet-clair);
-}
-
-.skill-card3 {
-    background-color: var(--rose);
-}
-
-.skill-card4 {
-    background-color: var(--orange); /* Orange vif */
-}
-
-.skill-card5 {
-    background-color: var(--bleu-etoile); /* Bleu étoile */
-}
-
-.skill-card6 {
-    background-color: #FF69B4; /* Rose clair */
-}
-
-.skill-card7 {
-    background-color: #32CD32; /* Vert lime */
-}
-
-
+.skill-card { background-color: var(--fond-a-propos); }
+.skill-card2 { background-color: var(--violet-clair); }
+.skill-card3 { background-color: var(--rose); }
+.skill-card4 { background-color: var(--orange); }
+.skill-card5 { background-color: var(--bleu-etoile); }
+.skill-card6 { background-color: #FF69B4; }
+.skill-card7 { background-color: #32CD32; }
 
 /* Section Portfolio */
 #portfolio p {
@@ -325,36 +326,45 @@ nav ul li a:hover {
     color: var(--gris-etoile);
 }
 
-/* Grille de projets (Portfolio) */
+/* Grille de projets (responsive déjà via auto-fit) */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 50px; /* Augmente l'espacement entre les projets */
-    padding: 40px 0; /* Ajoute de l'espace au-dessus et en dessous de la grille */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    padding: 40px 0;
 }
 
+/* Carte projet */
 .portfolio-item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--tkt);
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    min-height: 400px; /* Ajuste la hauteur minimale selon ton besoin */
+    min-height: 380px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
-
 
 .portfolio-item img {
     width: 100%;
     display: block;
 }
 
+.portfolio-image img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
 .portfolio-info {
-    position: relative; /* S'assure que le petit texte reste dans son cadre */
-    padding-bottom: 25px; /* Ajoute de l'espace pour éviter qu'il remonte trop */
-    min-height: 100px; /* Ajuste selon la taille moyenne du texte */
+    position: relative;
+    padding: 18px 18px 30px;
+    min-height: 110px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -365,15 +375,27 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
-.portfolio-info small {
-    align-self: flex-end; /* Positionne le texte en bas à droite */
-    font-size: 0.8em;
-    opacity: 0.8;
+.portfolio-info p {
+    flex-grow: 1;
+    margin-bottom: 10px;
 }
 
-.portfolio-info p {
-    flex-grow: 1; /* La description prendra l'espace disponible */
-    margin-bottom: 10px;
+.portfolio-info small {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.75em;
+    color: var(--gris-etoile);
+    opacity: 0.8;
+    text-align: right;
+}
+
+.tech-used {
+    font-style: italic;
+    color: var(--bleu-etoile);
+    font-weight: bold;
+    margin-bottom: 6px;
+    display: block;
 }
 
 .portfolio-item:hover {
@@ -383,10 +405,10 @@ nav ul li a:hover {
 
 /* Section Projets */
 #projets {
-    padding: 50px;
+    padding: 50px 20px;
     border-radius: 20px;
     margin: 50px auto;
-    width: 80%;
+    width: min(1100px, 80%);
 }
 
 #projets h2 {
@@ -398,44 +420,14 @@ nav ul li a:hover {
     color: var(--gris-etoile);
 }
 
-.portfolio-image img {
-    width: 100%;
-    height: auto;
-    max-height: 200px; /* Ajuste la hauteur maximale selon tes besoins */
-    object-fit: cover; /* Assure que l'image couvre bien la zone sans déformation */
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.portfolio-info small {
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    font-size: 0.75em; /* Taille légèrement plus petite */
-    color: var(--gris-etoile);
-    opacity: 0.8;
-    text-align: right;
-}
-
-    .tech-used {
-        font-style: italic;
-        color: #007BFF; /* Bleu vif pour bien ressortir */
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-
 /* Section Contact */
 #contact {
     background: var(--bleu-nuit);
-    padding: 50px;
+    padding: 50px 20px;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     margin: 50px auto;
-    width: 80%;
+    width: min(1100px, 80%);
     text-align: center;
 }
 
@@ -444,8 +436,9 @@ nav ul li a:hover {
     margin-bottom: 20px;
 }
 
-#contact p, #contact a {
-    font-size: 1.2em;
+#contact p,
+#contact a {
+    font-size: 1.15em;
     color: var(--gris-etoile);
     margin: 10px 0;
     text-decoration: none;
@@ -461,9 +454,9 @@ nav ul li a:hover {
     color: var(--blanc-pur);
     padding: 12px 25px;
     margin: 15px 10px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1.05em;
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
@@ -476,10 +469,6 @@ nav ul li a:hover {
     margin-right: 8px;
 }
 
-
-
-
-
 /* Footer */
 footer {
     background: var(--footer-bg);
@@ -490,31 +479,114 @@ footer {
     z-index: 2;
 }
 
+/* ========================= */
+/*          RESPONSIVE       */
+/* ========================= */
 
+/* Tablette */
+@media (max-width: 1024px) {
+    header {
+        padding: 16px 25px;
+    }
 
-/* Adaptation pour mobile */
+    nav ul {
+        gap: 18px;
+    }
+
+    #a-propos,
+    #projets,
+    #contact {
+        width: 90%;
+        padding: 40px 20px;
+    }
+
+    .portfolio-grid {
+        gap: 25px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 18px;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        width: 100%;
+        display: block;
+        padding: 10px 0;
+    }
+
+    #accueil {
+        padding-top: 140px;
+        min-height: 100vh;
+    }
+
     .about-container {
         flex-direction: column;
+        align-items: center;
     }
 
     .about-info {
         text-align: center;
     }
 
+    .about-info button {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    #a-propos,
+    #portfolio,
+    #projets,
+    #contact {
+        width: 92%;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
     header {
-        padding: 10px 20px;
+        padding: 10px 14px;
     }
 
-    nav ul {
-        gap: 15px;
+    .logo {
+        font-size: 1.25em;
     }
 
-    section {
-        width: 90%;
+    .btn-cv,
+    .btn-contact {
+        width: 100%;
+        max-width: 420px;
     }
 
-    #a-propos, #portfolio, #projets, #contact {
-        width: 90%;
+    #a-propos {
+        padding: 30px 16px;
+    }
+
+    #contact {
+        padding: 35px 16px;
+    }
+
+    .portfolio-info {
+        padding: 16px 16px 30px;
     }
 }
